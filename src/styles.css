@@ -263,3 +263,59 @@ input:focus { outline: none; border-color: var(--pink); box-shadow: var(--glow-p
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* ---- счёт ---- */
+.score {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 16px;
+  background: var(--white);
+  border: 2px solid var(--pink);
+  border-radius: 999px;
+  box-shadow: var(--glow-pink);
+}
+.score-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.score-value {
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 800;
+  color: var(--pink);
+  text-shadow: 0 0 10px rgba(255, 95, 168, 0.45);
+  font-variant-numeric: tabular-nums;
+}
+.score.negative { border-color: var(--blue); box-shadow: var(--glow-blue); }
+.score.negative .score-value { color: var(--blue); text-shadow: 0 0 10px rgba(69, 200, 255, 0.45); }
+
+/* ---- вердикт ---- */
+.verdict { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.btn.right {
+  background: linear-gradient(135deg, var(--pink), #ff8ec4);
+  border-color: var(--white);
+  color: var(--white);
+  font-weight: 800;
+  box-shadow: var(--glow-pink);
+}
+.btn.wrong {
+  background: var(--white);
+  border-color: var(--blue);
+  color: var(--blue);
+  font-weight: 800;
+  box-shadow: var(--glow-blue);
+}
+
+.cells-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--pink-soft);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 560px) {
+  .score { padding: 4px 12px; gap: 6px; }
+  .score-label { display: none; }
+  .verdict { grid-template-columns: 1fr; }
+}

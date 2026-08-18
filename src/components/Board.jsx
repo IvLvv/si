@@ -8,6 +8,7 @@ export default function Board({ themes, base, used, onPick, cellId }) {
           <div className="board-row" key={t}>
             <div className="theme">{theme.name}</div>
             <div className="cells" style={{ '--cols': cols }}>
+              {theme.questions.length === 0 && <div className="cells-empty">Скоро</div>}
               {theme.questions.map((_, q) => {
                 const isUsed = used.includes(cellId(t, q))
                 return (

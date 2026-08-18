@@ -1,27 +1,28 @@
 import { useEffect } from 'react'
+import Score from './Score.jsx'
 
-export default function QuestionScreen({ question, revealed, onReveal, onBack }) {
+export default function QuestionScreen({ question, revealed, score, onReveal, onFinish }) {
   useEffect(() => {
     window.scrollTo(0, 0)
     const onKey = (e) => {
-      if (e.key === 'Escape') onBack()
+      if (e.key === 'Escape') onFinish(null)
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault()
-        if (revealed) onBack()
-        else onReveal()
+        if (!revealed) onReveal()
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [onBack, onReveal, revealed])
+  }, [onFinish, onReveal, revealed])
 
   return (
     <div className="app page">
       <header className="topbar">
-        <button className="btn ghost" onClick={onBack}>
+        <button className="btn ghost" onClick={() => onFinish(null)}>
           ← К полю
         </button>
         <div className="topbar-actions">
+          <Score value={score} />
           <span className="badge">{question.theme}</span>
           <span className="badge price">{question.price}</span>
         </div>
@@ -41,9 +42,20 @@ export default function QuestionScreen({ question, revealed, onReveal, onBack })
         )}
       </div>
 
-      <button className="btn primary big wide" onClick={revealed ? onBack : onReveal}>
-        {revealed ? 'К полю' : 'Показать ответ'}
-      </button>
+      {revealed ? (
+        <div className="verdict">
+          <button className="btn big right" onClick={() => onFinish(true)}>
+            Правильно +{question.price}
+          </button>
+          <button className="btn big wrong" onClick={() => onFinish(false)}>
+            Неправильно −{question.price}
+          </button>
+        </div>
+      ) : (
+        <button className="btn primary big wide" onClick={onReveal}>
+          Показать ответ
+        </button>
+      )}
     </div>
   )
 }
