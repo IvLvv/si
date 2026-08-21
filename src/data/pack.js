@@ -51,7 +51,7 @@ export const pack = {
       questions: [],
     },
     {
-      name: 'Не Журна, но тоже Лиза',
+      name: 'Сестренка',
       questions: [
         {
           q: 'Что было после этой фотографии?',
