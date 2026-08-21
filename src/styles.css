@@ -198,6 +198,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   display: block;
   width: 100%;
   max-height: 55dvh;
+  object-fit: contain;
   border-radius: var(--radius);
   background: var(--white);
   border: 2px solid var(--blue);

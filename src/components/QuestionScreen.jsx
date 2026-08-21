@@ -32,11 +32,13 @@ export default function QuestionScreen({ question, revealed, score, onReveal, on
         {revealed ? (
           <>
             {question.a && <p className="answer-text">{question.a}</p>}
+            {question.aImage && <Image src={question.aImage} key={question.aImage} />}
             {question.aVideo && <Video src={question.aVideo} key={question.aVideo} />}
           </>
         ) : (
           <>
             {question.q && <p className="question-text">{question.q}</p>}
+            {question.qImage && <Image src={question.qImage} key={question.qImage} />}
             {question.qVideo && <Video src={question.qVideo} key={question.qVideo} />}
           </>
         )}
@@ -58,6 +60,10 @@ export default function QuestionScreen({ question, revealed, score, onReveal, on
       )}
     </div>
   )
+}
+
+function Image({ src }) {
+  return <img className="media" src={src} alt="" />
 }
 
 function Video({ src }) {
