@@ -1,5 +1,5 @@
 export default function Board({ themes, base, used, onPick, cellId }) {
-  const cols = Math.max(...themes.map((t) => t.questions.length))
+  const cols = Math.max(6, ...themes.map((t) => t.questions.length))
 
   return (
     <div className="board-scroll">

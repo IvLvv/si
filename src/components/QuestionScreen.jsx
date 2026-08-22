@@ -33,6 +33,13 @@ export default function QuestionScreen({ question, revealed, score, onReveal, on
           <>
             {question.a && <p className="answer-text">{question.a}</p>}
             {question.aImage && <Image src={question.aImage} key={question.aImage} />}
+            {question.aImages && (
+              <div className="media-grid">
+                {question.aImages.map((src) => (
+                  <Image src={src} key={src} />
+                ))}
+              </div>
+            )}
             {question.aVideo && <Video src={question.aVideo} key={question.aVideo} />}
           </>
         ) : (

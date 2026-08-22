@@ -194,6 +194,17 @@ button { font: inherit; color: inherit; cursor: pointer; }
   text-shadow: 0 0 12px rgba(255, 95, 168, 0.5), 0 0 32px rgba(255, 95, 168, 0.25);
 }
 
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.media-grid .media {
+  max-height: 32dvh;
+}
+
 .media {
   display: block;
   width: 100%;
